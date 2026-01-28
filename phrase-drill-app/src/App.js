@@ -1,26 +1,27 @@
+import { useState, useEffect } from 'react';
 import './App.css';
 
-/** Темы: времена и основные конструкции в английском (заготовка под дальнейшее расширение). */
-const TOPICS = [
-  { id: 'present-simple', title: 'Present Simple' },
-  { id: 'present-continuous', title: 'Present Continuous' },
-  { id: 'past-simple', title: 'Past Simple' },
-  { id: 'past-continuous', title: 'Past Continuous' },
-  { id: 'present-perfect', title: 'Present Perfect' },
-  { id: 'future-will-going-to', title: 'Future: will / going to' },
-  { id: 'there-is-are', title: 'There is / There are' },
-  { id: 'to-be', title: 'To be (am, is, are)' },
-  { id: 'have-got', title: 'Have got / Has got' },
-  { id: 'modals', title: 'Модальные глаголы (can, must, should)' },
-  { id: 'questions', title: 'Вопросы (общие и специальные)' },
-  { id: 'passive', title: 'Passive Voice (страдательный залог)' },
-  { id: 'conditionals', title: 'Условные предложения (Conditionals)' },
-];
+const API_BASE = process.env.REACT_APP_API_URL || '';
 
 /**
  * Root component — главная страница PhraseDrill со списком тем.
  */
 function App() {
+  const [topics, setTopics] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/home/topics`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Ошибка загрузки: ${res.status}`);
+        return res.json();
+      })
+      .then(setTopics)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
   /** Обработчик выбора темы (заготовка под навигацию или загрузку фраз). */
   const handleTopicClick = (topic) => {
     console.log('Выбрана тема:', topic.id, topic.title);
@@ -47,8 +48,10 @@ function App() {
 
         <section className="topics">
           <h2 className="topics-heading">Темы</h2>
+          {error && <p className="topics-error">Не удалось загрузить темы: {error}</p>}
+          {loading && <p className="topics-loading">Загрузка тем…</p>}
           <ul className="topics-grid">
-            {TOPICS.map((topic, index) => (
+            {topics.map((topic, index) => (
               <li key={topic.id} className="topics-item" style={{ animationDelay: `${index * 40}ms` }}>
                 <button
                   type="button"
