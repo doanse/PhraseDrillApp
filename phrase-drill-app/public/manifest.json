@@ -1,0 +1,16 @@
+{
+  "short_name": "PhraseDrill",
+  "name": "PhraseDrill — разговорный английский",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0c0c0e",
+  "background_color": "#0c0c0e"
+}

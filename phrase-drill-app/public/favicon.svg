@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="24" x2="0" y2="8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58a6ff"/>
+      <stop offset="1" stop-color="#388bfd"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#bg)"/>
+  <!-- Speech bubble = phrases -->
+  <path d="M8 7h16c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2h-4l-2.5 3.5L13 20H8c-1.1 0-2-.9-2-2V9c0-1.1.9-2 2-2z" fill="url(#blue)"/>
+  <circle cx="12" cy="14" r="1.4" fill="#0d1117"/>
+  <circle cx="16" cy="14" r="1.4" fill="#0d1117"/>
+  <circle cx="20" cy="14" r="1.4" fill="#0d1117"/>
+</svg>
