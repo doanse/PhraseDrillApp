@@ -12,7 +12,7 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/home/topics`)
+    fetch(`${API_BASE}/api/Themes/topics`)
       .then((res) => {
         if (!res.ok) throw new Error(`Ошибка загрузки: ${res.status}`);
         return res.json();
